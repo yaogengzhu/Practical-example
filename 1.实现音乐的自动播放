@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.show{
+			background-color: pink;
+		}
+	</style>
+</head>
+<body>
+	<audio src='' autoplay controls "></audio>
+	<ol id="music">
+		<li>Ayo97,是阿涵阿 - 感谢你曾来过.mp3</li>
+		<li>杨钰莹,毛宁 - 心雨.mp3</li>
+		<li>胡歌,白冰 - 美丽的神话.mp3</li>
+		<li>钟镇涛 - 只要你过得比我好.mp3</li>
+	</ol>
+
+	<script type="text/javascript">
+		var musicObj = document.getElementById('music');
+		var li  = musicObj.children;
+		var audio = document.getElementsByTagName('audio')[0];
+		console.log(audio);
+
+		var index = 0;
+		audio.src = 'music/'+li[index].innerHTML;
+		li[index].className = 'show';
+
+		audio.onended = function (){
+			li[index].className ='';
+			if (index === li.length-1) {
+				index = 0;
+			}else {
+				index++;
+			} 
+			li[index].className = 'show';
+			audio.src = 'music/' + li[index].innerHTML;
+		}
+
+	</script>
+</body>
+</html>
